@@ -1,4 +1,5 @@
 import type { V2_MetaFunction } from "@remix-run/cloudflare";
+import { gql, useQuery } from "@apollo/client";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -7,10 +8,26 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
+const LOCATIONS_QUERY = gql`
+  query GetLocations {
+    locations {
+      id
+      name
+      description
+      photo
+    }
+  }
+`;
+
 export default function Index() {
+  const { data } = useQuery(LOCATIONS_QUERY);
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Remix</h1>
+      <div>
+        {JSON.stringify(data)}
+      </div>
       <ul>
         <li>
           <a
