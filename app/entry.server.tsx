@@ -27,8 +27,8 @@ export default async function handleRequest(
     ssrMode: true,
     cache: new InMemoryCache(),
     link: createHttpLink({
-      uri: "https://flyby-gateway.herokuapp.com/", // from Apollo's Voyage tutorial series (https://www.apollographql.com/tutorials/voyage-part1/)
-      //headers: request.headers,
+      uri: "https://flyby-locations-sub.herokuapp.com/", // from Apollo's Voyage tutorial series (https://www.apollographql.com/tutorials/voyage-part1/)
+      headers: {},//request.headers,
       credentials: request.credentials ?? "include", // or "same-origin" if your backend server is the same domain
     }),
   });
