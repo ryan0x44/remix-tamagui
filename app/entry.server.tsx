@@ -15,6 +15,7 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { getDataFromTree } from "@apollo/client/react/ssr";
+import graphqlClient from "./graphql-client";
 
 export default async function handleRequest(
   request: Request,
@@ -23,25 +24,15 @@ export default async function handleRequest(
   remixContext: EntryContext,
   loadContext: AppLoadContext
 ) {
-  const client = new ApolloClient({
-    ssrMode: true,
-    cache: new InMemoryCache(),
-    link: createHttpLink({
-      uri: "https://flyby-locations-sub.herokuapp.com/", // from Apollo's Voyage tutorial series (https://www.apollographql.com/tutorials/voyage-part1/)
-      headers: {},//request.headers,
-      credentials: request.credentials ?? "include", // or "same-origin" if your backend server is the same domain
-    }),
-  });
-
   const App = (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={graphqlClient}>
       <RemixServer context={remixContext} url={request.url} />
     </ApolloProvider>
   )
 
   await getDataFromTree(App)
   // Extract the entirety of the Apollo Client cache's current state
-    const initialState = client.extract();
+    const initialState = graphqlClient.extract();
 
   const body = await renderToReadableStream(
     (

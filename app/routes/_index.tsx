@@ -1,5 +1,7 @@
 import type { V2_MetaFunction } from "@remix-run/cloudflare";
 import { gql, useQuery } from "@apollo/client";
+import { useLoaderData } from "@remix-run/react";
+import graphqlClient from "../graphql-client";
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -19,8 +21,12 @@ const LOCATIONS_QUERY = gql`
   }
 `;
 
+export async function loader() {
+  return await graphqlClient.query({query: LOCATIONS_QUERY});
+}
+
 export default function Index() {
-  const { data } = useQuery(LOCATIONS_QUERY);
+  const data = useLoaderData<typeof loader>();
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
