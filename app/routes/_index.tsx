@@ -1,7 +1,8 @@
 import type { V2_MetaFunction } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { graphql } from '../graphql/gql';
-import { gql, GraphQLClient, request } from 'graphql-request'
+import { gql, request } from 'graphql-request'
+import graphqlClient from '../graphql-client';
 
 export const meta: V2_MetaFunction = () => {
   return [
@@ -21,12 +22,7 @@ const locationsQuery = gql`
 `;
 
 export async function loader() {
-  const client = new GraphQLClient(
-    'https://flyby-locations-sub.herokuapp.com/',
-    // @see https://github.com/remix-run/remix/issues/2075#issuecomment-1048934060
-    { fetch: fetch }
-  );
-  return await client.request(locationsQuery)
+  return await graphqlClient.request(locationsQuery)
 }
 
 export default function Index() {
