@@ -2,7 +2,6 @@ import type { V2_MetaFunction } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { graphql } from '../graphql/gql';
 import { gql, GraphQLClient, request } from 'graphql-request'
-import { useQuery } from '@tanstack/react-query';
 
 export const meta: V2_MetaFunction = () => {
   return [
