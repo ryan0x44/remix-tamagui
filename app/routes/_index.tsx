@@ -1,7 +1,6 @@
 import type { V2_MetaFunction } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 import { graphql } from '../graphql/gql';
-import { gql, request } from 'graphql-request'
 import graphqlClient from '../graphql-client';
 
 export const meta: V2_MetaFunction = () => {
@@ -11,7 +10,7 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-const locationsQuery = gql`
+const locationsQuery = graphql(`
   query GetLocations {
     locations {
       id
@@ -19,7 +18,7 @@ const locationsQuery = gql`
       description
     }
   }
-`;
+`);
 
 export async function loader() {
   return await graphqlClient.request(locationsQuery)

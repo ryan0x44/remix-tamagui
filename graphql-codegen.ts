@@ -5,6 +5,7 @@ const config: CodegenConfig = {
   overwrite: true,
   schema: "https://flyby-locations-sub.herokuapp.com/",
   documents: "app/*/**.tsx",
+  ignoreNoDocuments: true,
   generates: {
     "app/graphql/": {
       preset: "client",
