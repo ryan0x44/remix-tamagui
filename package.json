@@ -19,12 +19,15 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.19.0",
+    "@gqty/react": "^3.0.0-alpha-577a9298.0",
     "@remix-run/dev": "^1.18.0",
     "@remix-run/eslint-config": "^1.18.0",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
     "eslint": "^8.38.0",
-    "typescript": "^5.0.4",
+    "gqty": "^3.0.0-alpha-577a9298.0",
+    "graphql": "^16.7.1",
+    "typescript": "^5.1.6",
     "wrangler": "^3.1.1"
   },
   "engines": {
