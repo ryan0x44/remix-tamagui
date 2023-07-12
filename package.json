@@ -3,9 +3,9 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix build",
-    "dev": "remix dev --no-restart -c \"npm run start\"",
-    "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
+    "build": "TAMAGUI_TARGET=web remix build",
+    "dev": "TAMAGUI_TARGET=web remix dev --no-restart -c \"npm run start\"",
+    "start": "TAMAGUI_TARGET=web wrangler pages dev --compatibility-date=2023-06-21 ./public",
     "typecheck": "tsc",
     "graphql-codegen": "graphql-codegen --config graphql-codegen.ts -w"
   },
