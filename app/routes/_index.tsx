@@ -4,7 +4,7 @@ import { graphql } from '../graphql/gql';
 // import { Location } from '../graphql/graphql';
 import { Query } from '../graphql/graphql';
 import graphqlClient from '../graphql-client';
-
+import { Button } from 'tamagui';
 export const meta: V2_MetaFunction = () => {
   return [
     { title: "New Remix App" },
@@ -33,6 +33,7 @@ export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Remix</h1>
+      <Button>Hello</Button>
       <div>
         <ol>
           {data.locations.map((location) => (
