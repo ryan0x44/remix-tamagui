@@ -14,7 +14,8 @@ if (globalThis.process == undefined) {
   globalThis.process = {}
 }
 globalThis.process.env = {
-  NODE_ENV: "development"
+  NODE_ENV: "development",
+  TAMAGUI_TARGET: "web"
 }
 
 export default async function handleRequest(
