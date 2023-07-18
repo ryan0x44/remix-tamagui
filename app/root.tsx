@@ -23,6 +23,11 @@ export default function App() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <Meta />
         <Links />
+        <style
+            dangerouslySetInnerHTML={{
+              __html: tamaguiConfig.getCSS(),
+            }}
+          />
       </head>
       <body>
         <TamaguiProvider config={tamaguiConfig} disableInjectCSS={true}>
